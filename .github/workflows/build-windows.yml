@@ -42,7 +42,7 @@ jobs:
       - name: Build and package
         shell: msys2 {0}
         env:
-          BB_LTO: OFF
+          BB_LTO: ON
         run: |
           export MSYS2_ROOT="$(cygpath -m /)"
           export WINPYTHON=/clang64/bin/python.exe
