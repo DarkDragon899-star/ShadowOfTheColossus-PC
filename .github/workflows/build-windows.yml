@@ -47,6 +47,7 @@ jobs:
           export MSYS2_ROOT="$(cygpath -m /)"
           export WINPYTHON=/clang64/bin/python.exe
           python -m pip install --break-system-packages pyinstaller
+          grep -rl 'std::abort' gpu/third_party/sirit | xargs -r sed -i 's/std::abort/abort/g'
           bash build.sh
           bash packaging/windows/package_sotc.sh
 
