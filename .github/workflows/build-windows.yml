@@ -44,21 +44,5 @@ jobs:
         env:
           BB_LTO: OFF
         run: |
-                - name: Build and package
-        shell: msys2 {0}
-        env:
-          BB_LTO: OFF
-        run: |
           export MSYS2_ROOT="$(cygpath -m /)"
-          export WINPYTHON=/clang64/bin/python.exe
-          python -m pip install --break-system-packages pyinstaller
-          grep -rl 'std::abort' gpu/third_party/sirit | xargs -r sed -i 's/std::abort/abort/g'
-          sed -i 's/static int common_initialized;/static int common_initialized __attribute__((unused));/' src/runtime_services.c
-          sed -i 's/ -Werror//g' build.sh gpu/CMakeLists.txt gpu/third_party/sirit/CMakeLists.txt
-          bash build.sh
-          bash packaging/windows/package_sotc.sh
-
-      - uses: actions/upload-artifact@v4
-        with:
-          name: SotC-PC
-          path: dist/SotC-PC.zip
+          export
