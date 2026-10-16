@@ -51,6 +51,7 @@ jobs:
           sed -i 's/static int common_initialized;/static int common_initialized __attribute__((unused));/' src/runtime_services.c
           sed -i 's/ -Werror//g' build.sh gpu/CMakeLists.txt gpu/third_party/sirit/CMakeLists.txt
           sed -i 's#/c/msys64/clang64#/clang64#g' packaging/windows/build_dlss.sh
+          export CMAKE_EXE="/c/Program Files/CMake/bin/cmake.exe"
           git clone --depth 1 https://github.com/NVIDIA/DLSS "$HOME/dlss-sdk"
           export DLSS_SDK_ROOT="$HOME/dlss-sdk"
           bash build.sh
